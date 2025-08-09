@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  node1:
+    build: ./node1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./node1/fragments:/app/fragments
+    environment:
+      - NODE_NAME=node1
+
+  node2:
+    build: ./node2
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./node2/fragments:/app/fragments
+    environment:
+      - NODE_NAME=node2
+
+networks:
+  p2p-network:
+    driver: bridge
